@@ -1,51 +1,27 @@
-import CommandDispatcher from "./lib/CommandDispatcher"
-import LiteralMessage from "./lib/LiteralMessage"
-import ParseResults from "./lib/ParseResults"
-import StringReader from "./lib/StringReader"
-import { DefaultType } from "./lib/arguments/ArgumentType"
-import LiteralArgumentBuilder, { literal } from "./lib/builder/LiteralArgumentBuilder"
-import RequiredArgumentBuilder, { argument } from "./lib/builder/RequiredArgumentBuilder"
-import CommandContext from "./lib/context/CommandContext"
-import CommandContextBuilder from "./lib/context/CommandContextBuilder"
-import ParsedArgument from "./lib/context/ParsedArgument"
-import ParsedCommandNode from "./lib/context/ParsedCommandNode"
-import StringRange from "./lib/context/StringRange"
-import SuggestionsContext from "./lib/context/SuggestionContext"
-import CommandSyntaxException from "./lib/exceptions/CommandSyntaxException"
-import DynamicCommandExceptionType from "./lib/exceptions/DynamicCommandExceptionType"
-import SimpleCommandExceptionType from "./lib/exceptions/SimpleCommandExceptionType"
-import Suggestion from "./lib/suggestion/Suggestion"
-import Suggestions from "./lib/suggestion/Suggestions"
-import SuggestionsBuilder from "./lib/suggestion/SuggestionsBuilder";
-import ArgumentCommandNode from "./lib/tree/ArgumentCommandNode"
-import LiteralCommandNode from "./lib/tree/LiteralCommandNode"
-import RootCommandNode from "./lib/tree/RootCommandNode"
+import { DefaultType } from "./lib/arguments/ArgumentType";
+export * as CommandDispatcher from "./lib/CommandDispatcher";
+export * as LiteralMessage from "./lib/LiteralMessage";
+export * as ParseResults from "./lib/ParseResults";
+export * as StringReader from "./lib/StringReader";
+export { DefaultType } from "./lib/arguments/ArgumentType";
+export * as LiteralArgumentBuilder from "./lib/builder/LiteralArgumentBuilder";
+export { literal } from "./lib/builder/LiteralArgumentBuilder";
+export * as RequiredArgumentBuilder from "./lib/builder/RequiredArgumentBuilder";
+export { argument } from "./lib/builder/RequiredArgumentBuilder";
+export * as CommandContext from "./lib/context/CommandContext";
+export * as CommandContextBuilder from "./lib/context/CommandContextBuilder";
+export * as ParsedArgument from "./lib/context/ParsedArgument";
+export * as ParsedCommandNode from "./lib/context/ParsedCommandNode";
+export * as StringRange from "./lib/context/StringRange";
+export * as SuggestionsContext from "./lib/context/SuggestionContext";
+export * as CommandSyntaxException from "./lib/exceptions/CommandSyntaxException";
+export * as DynamicCommandExceptionType from "./lib/exceptions/DynamicCommandExceptionType";
+export * as SimpleCommandExceptionType from "./lib/exceptions/SimpleCommandExceptionType";
+export * as Suggestion from "./lib/suggestion/Suggestion";
+export * as Suggestions from "./lib/suggestion/Suggestions";
+export * as SuggestionsBuilder from "./lib/suggestion/SuggestionsBuilder";
+export * as ArgumentCommandNode from "./lib/tree/ArgumentCommandNode";
+export * as LiteralCommandNode from "./lib/tree/LiteralCommandNode";
+export * as RootCommandNode from "./lib/tree/RootCommandNode";
 
-export const { word, string, greedyString, bool, integer, float} = DefaultType
-
-export default {
-	dispatcher: new CommandDispatcher(),
-	word, string, greedyString, bool, integer, float,	
-	literal, argument,
-	CommandDispatcher,
-	LiteralMessage,
-	ParseResults,
-	StringReader,
-	LiteralArgumentBuilder,
-	RequiredArgumentBuilder,
-	CommandContext,
-	CommandContextBuilder,
-	ParsedArgument,
-	ParsedCommandNode,
-	StringRange,
-	SuggestionsContext,
-	CommandSyntaxException,
-	SimpleCommandExceptionType,
-	DynamicCommandExceptionType,
-	Suggestion,
-	Suggestions,
-	SuggestionsBuilder,
-	ArgumentCommandNode,
-	LiteralCommandNode,
-	RootCommandNode
-}
+export const { word, string, greedyString, bool, integer, float } = DefaultType;
