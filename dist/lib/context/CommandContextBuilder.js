@@ -1,8 +1,13 @@
-import StringRange from "./StringRange";
-import CommandContext from "./CommandContext";
-import SuggestionContext from "./SuggestionContext";
-import ParsedCommandNode from "./ParsedCommandNode";
-export default class CommandContextBuilder {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const StringRange_1 = __importDefault(require("./StringRange"));
+const CommandContext_1 = __importDefault(require("./CommandContext"));
+const SuggestionContext_1 = __importDefault(require("./SuggestionContext"));
+const ParsedCommandNode_1 = __importDefault(require("./ParsedCommandNode"));
+class CommandContextBuilder {
     constructor(dispatcher, source, rootNode, start) {
         this.args = new Map();
         this.nodes = [];
@@ -10,7 +15,7 @@ export default class CommandContextBuilder {
         this.rootNode = rootNode;
         this.dispatcher = dispatcher;
         this.source = source;
-        this.range = StringRange.at(start);
+        this.range = StringRange_1.default.at(start);
     }
     withSource(source) {
         this.source = source;
@@ -34,8 +39,8 @@ export default class CommandContextBuilder {
         return this;
     }
     withNode(node, range) {
-        this.nodes.push(new ParsedCommandNode(node, range));
-        this.range = StringRange.encompassing(this.range, range);
+        this.nodes.push(new ParsedCommandNode_1.default(node, range));
+        this.range = StringRange_1.default.encompassing(this.range, range);
         this.modifier = node.getRedirectModifier();
         this.forks = node.isFork();
         return this;
@@ -71,7 +76,7 @@ export default class CommandContextBuilder {
         return this.nodes;
     }
     build(input) {
-        return new CommandContext(this.source, input, this.args, this.command, this.rootNode, this.nodes, this.range, this.child == null ? null : this.child.build(input), this.modifier, this.forks);
+        return new CommandContext_1.default(this.source, input, this.args, this.command, this.rootNode, this.nodes, this.range, this.child == null ? null : this.child.build(input), this.modifier, this.forks);
     }
     getDispatcher() {
         return this.dispatcher;
@@ -87,10 +92,10 @@ export default class CommandContextBuilder {
                 }
                 else if (this.nodes.length > 0) {
                     let last = this.nodes[this.nodes.length - 1];
-                    return new SuggestionContext(last.getNode(), last.getRange().getEnd() + 1);
+                    return new SuggestionContext_1.default(last.getNode(), last.getRange().getEnd() + 1);
                 }
                 else {
-                    return new SuggestionContext(this.rootNode, this.range.getStart());
+                    return new SuggestionContext_1.default(this.rootNode, this.range.getStart());
                 }
             }
             else {
@@ -98,17 +103,18 @@ export default class CommandContextBuilder {
                 for (let node of this.nodes) {
                     let nodeRange = node.getRange();
                     if (nodeRange.getStart() <= cursor && cursor <= nodeRange.getEnd()) {
-                        return new SuggestionContext(prev, nodeRange.getStart());
+                        return new SuggestionContext_1.default(prev, nodeRange.getStart());
                     }
                     prev = node.getNode();
                 }
                 if ((prev == null)) {
                     throw new Error("Can't find node before cursor");
                 }
-                return new SuggestionContext(prev, this.range.getStart());
+                return new SuggestionContext_1.default(prev, this.range.getStart());
             }
         }
         throw new Error("Can't find node before cursor");
     }
 }
+exports.default = CommandContextBuilder;
 //# sourceMappingURL=CommandContextBuilder.js.map

@@ -1,6 +1,11 @@
-import CommandSyntaxException from "../exceptions/CommandSyntaxException";
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const CommandSyntaxException_1 = __importDefault(require("../exceptions/CommandSyntaxException"));
 const EXAMPLES = ["0", "1.2", ".5", "-1", "-.5", "-1234.56"];
-export default class FloatArgumentType {
+class FloatArgumentType {
     constructor(minimum, maximum) {
         this.minimum = minimum;
         this.maximum = maximum;
@@ -22,11 +27,11 @@ export default class FloatArgumentType {
         let result = reader.readFloat();
         if (result < this.minimum) {
             reader.setCursor(start);
-            throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.integerTooLow().createWithContext(reader, result, this.minimum);
+            throw CommandSyntaxException_1.default.BUILT_IN_EXCEPTIONS.integerTooLow().createWithContext(reader, result, this.minimum);
         }
         if (result > this.maximum) {
             reader.setCursor(start);
-            throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.integerTooHigh().createWithContext(reader, result, this.maximum);
+            throw CommandSyntaxException_1.default.BUILT_IN_EXCEPTIONS.integerTooHigh().createWithContext(reader, result, this.maximum);
         }
         return result;
     }
@@ -52,4 +57,5 @@ export default class FloatArgumentType {
         return EXAMPLES;
     }
 }
+exports.default = FloatArgumentType;
 //# sourceMappingURL=FloatArgumentType.js.map

@@ -407,8 +407,8 @@
         "affectsGlobalScope": false
       },
       "./src/index.ts": {
-        "version": "d394d124422d52c7a4002176c7f77f3f3d9d5558d06d67d20ff74f4cbce28b16",
-        "signature": "c2698247956963ea7e84b8941c676ddd48b4ba477fe297c790063d6a1f4fed79",
+        "version": "ecec7759eb21f1772f4cd4bdb4050945026c4a47c860d8bb536b076b5022b557",
+        "signature": "51aaa6540a2ffd150bf948cd1b023a3cf139616bbbe12f80e8785ce72ce18d7f",
         "affectsGlobalScope": false
       },
       "./node_modules/@types/node/globals.d.ts": {
@@ -636,7 +636,7 @@
         "lib.es2020.d.ts",
         "lib.esnext.d.ts"
       ],
-      "module": 6,
+      "module": 1,
       "moduleResolution": 2,
       "types": [
         "node"
@@ -814,6 +814,7 @@
         "./src/lib/exceptions/DynamicCommandExceptionType.ts",
         "./src/lib/exceptions/SimpleCommandExceptionType.ts",
         "./src/lib/suggestion/Suggestion.ts",
+        "./src/lib/suggestion/Suggestions.ts",
         "./src/lib/suggestion/SuggestionsBuilder.ts",
         "./src/lib/tree/ArgumentCommandNode.ts",
         "./src/lib/tree/LiteralCommandNode.ts",
@@ -1209,7 +1210,10 @@
         "./src/lib/LiteralMessage.ts",
         "./src/lib/ParseResults.ts",
         "./src/lib/StringReader.ts",
-        "./src/lib/arguments/ArgumentType.ts",
+        "./src/lib/arguments/BoolArgumentType.ts",
+        "./src/lib/arguments/FloatArgumentType.ts",
+        "./src/lib/arguments/IntegerArgumentType.ts",
+        "./src/lib/arguments/StringArgumentType.ts",
         "./src/lib/builder/LiteralArgumentBuilder.ts",
         "./src/lib/builder/RequiredArgumentBuilder.ts",
         "./src/lib/context/CommandContext.ts",
@@ -1222,6 +1226,7 @@
         "./src/lib/exceptions/DynamicCommandExceptionType.ts",
         "./src/lib/exceptions/SimpleCommandExceptionType.ts",
         "./src/lib/suggestion/Suggestion.ts",
+        "./src/lib/suggestion/Suggestions.ts",
         "./src/lib/suggestion/SuggestionsBuilder.ts",
         "./src/lib/tree/ArgumentCommandNode.ts",
         "./src/lib/tree/LiteralCommandNode.ts",

@@ -1,4 +1,6 @@
-export default class LiteralMessage {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class LiteralMessage {
     constructor(str) {
         this.str = str;
     }
@@ -9,4 +11,5 @@ export default class LiteralMessage {
         return this.str;
     }
 }
+exports.default = LiteralMessage;
 //# sourceMappingURL=LiteralMessage.js.map

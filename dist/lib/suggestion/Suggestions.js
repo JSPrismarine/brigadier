@@ -1,6 +1,11 @@
-import isEqual from "../util/isEqual";
-import StringRange from "../context/StringRange";
-export default class Suggestions {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const isEqual_1 = __importDefault(require("../util/isEqual"));
+const StringRange_1 = __importDefault(require("../context/StringRange"));
+class Suggestions {
     constructor(range, suggestions) {
         this.range = range;
         this.suggestions = suggestions;
@@ -19,7 +24,7 @@ export default class Suggestions {
             return true;
         if (!(o instanceof Suggestions))
             return false;
-        return this.range.equals(o.range) && isEqual(this.suggestions, o.suggestions);
+        return this.range.equals(o.range) && isEqual_1.default(this.suggestions, o.suggestions);
     }
     toString() {
         return "Suggestions{" +
@@ -52,7 +57,7 @@ export default class Suggestions {
             start = Math.min(suggestion.getRange().getStart(), start);
             end = Math.max(suggestion.getRange().getEnd(), end);
         }
-        let range = new StringRange(start, end);
+        let range = new StringRange_1.default(start, end);
         const texts = [];
         for (let suggestion of suggestions) {
             texts.push(suggestion.expand(command, range));
@@ -61,5 +66,6 @@ export default class Suggestions {
         return new Suggestions(range, sorted);
     }
 }
-Suggestions.EMPTY = new Suggestions(StringRange.at(0), []);
+exports.default = Suggestions;
+Suggestions.EMPTY = new Suggestions(StringRange_1.default.at(0), []);
 //# sourceMappingURL=Suggestions.js.map

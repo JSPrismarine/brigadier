@@ -1,8 +1,13 @@
-import StringRange from "../context/StringRange";
-import Suggestion from "./Suggestion";
-import Suggestions from "./Suggestions";
-import IntegerSuggestion from "./IntegerSuggestion";
-export default class SuggestionsBuilder {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const StringRange_1 = __importDefault(require("../context/StringRange"));
+const Suggestion_1 = __importDefault(require("./Suggestion"));
+const Suggestions_1 = __importDefault(require("./Suggestions"));
+const IntegerSuggestion_1 = __importDefault(require("./IntegerSuggestion"));
+class SuggestionsBuilder {
     constructor(input, start) {
         this.result = [];
         this.input = input;
@@ -19,19 +24,19 @@ export default class SuggestionsBuilder {
         return this.remaining;
     }
     build() {
-        return Suggestions.create(this.input, this.result);
+        return Suggestions_1.default.create(this.input, this.result);
     }
     buildPromise() {
         return Promise.resolve(this.build());
     }
     suggest(text, tooltip = null) {
         if (typeof text === "number") {
-            this.result.push(new IntegerSuggestion(StringRange.between(this.start, this.input.length), text, tooltip));
+            this.result.push(new IntegerSuggestion_1.default(StringRange_1.default.between(this.start, this.input.length), text, tooltip));
             return this;
         }
         if (text === this.remaining)
             return this;
-        this.result.push(new Suggestion(StringRange.between(this.start, this.input.length), text, tooltip));
+        this.result.push(new Suggestion_1.default(StringRange_1.default.between(this.start, this.input.length), text, tooltip));
         return this;
     }
     add(other) {
@@ -45,4 +50,5 @@ export default class SuggestionsBuilder {
         return new SuggestionsBuilder(this.input, this.start);
     }
 }
+exports.default = SuggestionsBuilder;
 //# sourceMappingURL=SuggestionsBuilder.js.map

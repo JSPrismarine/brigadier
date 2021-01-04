@@ -1,6 +1,12 @@
-import ArgumentCommandNode from "../tree/ArgumentCommandNode";
-import ArgumentBuilder from "./ArgumentBuilder";
-export default class RequiredArgumentBuilder extends ArgumentBuilder {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.argument = void 0;
+const ArgumentCommandNode_1 = __importDefault(require("../tree/ArgumentCommandNode"));
+const ArgumentBuilder_1 = __importDefault(require("./ArgumentBuilder"));
+class RequiredArgumentBuilder extends ArgumentBuilder_1.default {
     constructor(name, type) {
         super();
         this.name = name;
@@ -26,12 +32,13 @@ export default class RequiredArgumentBuilder extends ArgumentBuilder {
         return this.name;
     }
     build() {
-        let result = new ArgumentCommandNode(this.getName(), this.getType(), this.getCommand(), this.getRequirement(), this.getRedirect(), this.getRedirectModifier(), this.isFork(), this.getSuggestionsProvider());
+        let result = new ArgumentCommandNode_1.default(this.getName(), this.getType(), this.getCommand(), this.getRequirement(), this.getRedirect(), this.getRedirectModifier(), this.isFork(), this.getSuggestionsProvider());
         for (let arg of this.getArguments()) {
             result.addChild(arg);
         }
         return result;
     }
 }
-export const argument = RequiredArgumentBuilder.argument;
+exports.default = RequiredArgumentBuilder;
+exports.argument = RequiredArgumentBuilder.argument;
 //# sourceMappingURL=RequiredArgumentBuilder.js.map

@@ -1,4 +1,6 @@
-export default function isEqual(a, b) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+function isEqual(a, b) {
     if (a === b)
         return true;
     if (typeof a != typeof b)
@@ -19,6 +21,7 @@ export default function isEqual(a, b) {
         return isObjectEqual(a, b);
     return false;
 }
+exports.default = isEqual;
 function isMapEqual(a, b) {
     if (a.size != b.size)
         return false;

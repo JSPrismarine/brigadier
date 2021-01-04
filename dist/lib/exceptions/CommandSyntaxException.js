@@ -1,5 +1,10 @@
-import BuiltInExceptions from "./BuiltInExceptions";
-export default class CommandSyntaxException extends Error {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const BuiltInExceptions_1 = __importDefault(require("./BuiltInExceptions"));
+class CommandSyntaxException extends Error {
     constructor(type, message, input = null, cursor = -1) {
         super(message.getString());
         Error.captureStackTrace(this, CommandSyntaxException);
@@ -46,6 +51,7 @@ export default class CommandSyntaxException extends Error {
         return this.message;
     }
 }
+exports.default = CommandSyntaxException;
 CommandSyntaxException.CONTEXT_AMOUNT = 10;
-CommandSyntaxException.BUILT_IN_EXCEPTIONS = new BuiltInExceptions();
+CommandSyntaxException.BUILT_IN_EXCEPTIONS = new BuiltInExceptions_1.default();
 //# sourceMappingURL=CommandSyntaxException.js.map

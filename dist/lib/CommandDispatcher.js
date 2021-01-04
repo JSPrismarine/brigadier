@@ -1,22 +1,27 @@
-import ParseResults from "./ParseResults";
-import CommandContextBuilder from "./context/CommandContextBuilder";
-import CommandSyntaxException from "./exceptions/CommandSyntaxException";
-import Suggestions from "./suggestion/Suggestions";
-import SuggestionsBuilder from "./suggestion/SuggestionsBuilder";
-import RootCommandNode from "./tree/RootCommandNode";
-import StringReader from "./StringReader";
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const ParseResults_1 = __importDefault(require("./ParseResults"));
+const CommandContextBuilder_1 = __importDefault(require("./context/CommandContextBuilder"));
+const CommandSyntaxException_1 = __importDefault(require("./exceptions/CommandSyntaxException"));
+const Suggestions_1 = __importDefault(require("./suggestion/Suggestions"));
+const SuggestionsBuilder_1 = __importDefault(require("./suggestion/SuggestionsBuilder"));
+const RootCommandNode_1 = __importDefault(require("./tree/RootCommandNode"));
+const StringReader_1 = __importDefault(require("./StringReader"));
 const ARGUMENT_SEPARATOR = " ";
 const USAGE_OPTIONAL_OPEN = "[";
 const USAGE_OPTIONAL_CLOSE = "]";
 const USAGE_REQUIRED_OPEN = "(";
 const USAGE_REQUIRED_CLOSE = ")";
 const USAGE_OR = "|";
-export default class CommandDispatcher {
+class CommandDispatcher {
     constructor(root = null) {
         this.consumer = {
             onCommandComplete() { }
         };
-        this.root = root || new RootCommandNode();
+        this.root = root || new RootCommandNode_1.default();
     }
     register(command) {
         let build = command.build();
@@ -28,9 +33,9 @@ export default class CommandDispatcher {
     }
     execute(input, source = null) {
         if (typeof input === "string")
-            input = new StringReader(input);
+            input = new StringReader_1.default(input);
         let parse;
-        if (input instanceof StringReader) {
+        if (input instanceof StringReader_1.default) {
             if (!(source == null))
                 parse = this.parse(input, source);
         }
@@ -41,10 +46,10 @@ export default class CommandDispatcher {
                 throw parse.getExceptions().values().next().value;
             }
             else if (parse.getContext().getRange().isEmpty()) {
-                throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext(parse.getReader());
+                throw CommandSyntaxException_1.default.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext(parse.getReader());
             }
             else {
-                throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownArgument().createWithContext(parse.getReader());
+                throw CommandSyntaxException_1.default.BUILT_IN_EXCEPTIONS.dispatcherUnknownArgument().createWithContext(parse.getReader());
             }
         }
         let result = [];
@@ -109,14 +114,14 @@ export default class CommandDispatcher {
         }
         if (!foundCommand) {
             this.consumer.onCommandComplete(original, false, 0);
-            throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext(parse.getReader());
+            throw CommandSyntaxException_1.default.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext(parse.getReader());
         }
         return result;
     }
     parse(command, source) {
         if (typeof command === "string")
-            command = new StringReader(command);
-        let context = new CommandContextBuilder(this, source, this.root, command.getCursor());
+            command = new StringReader_1.default(command);
+        let context = new CommandContextBuilder_1.default(this, source, this.root, command.getCursor());
         return this.parseNodes(this.root, command, context);
     }
     parseNodes(node, originalReader, contextSoFar) {
@@ -128,12 +133,12 @@ export default class CommandDispatcher {
             if (!child.canUse(source))
                 continue;
             let context = contextSoFar.copy();
-            let reader = new StringReader(originalReader);
+            let reader = new StringReader_1.default(originalReader);
             try {
                 child.parse(reader, context);
                 if (reader.canRead())
                     if (reader.peek() != ARGUMENT_SEPARATOR)
-                        throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherExpectedArgumentSeparator().createWithContext(reader);
+                        throw CommandSyntaxException_1.default.BUILT_IN_EXCEPTIONS.dispatcherExpectedArgumentSeparator().createWithContext(reader);
             }
             catch (ex) {
                 if (errors == null) {
@@ -147,10 +152,10 @@ export default class CommandDispatcher {
             if (reader.canRead(child.getRedirect() == null ? 2 : 1)) {
                 reader.skip();
                 if (!(child.getRedirect() == null)) {
-                    let childContext = new CommandContextBuilder(this, source, child.getRedirect(), reader.getCursor());
+                    let childContext = new CommandContextBuilder_1.default(this, source, child.getRedirect(), reader.getCursor());
                     let parse = this.parseNodes(child.getRedirect(), reader, childContext);
                     context.withChild(parse.getContext());
-                    return new ParseResults(context, parse.getReader(), parse.getExceptions());
+                    return new ParseResults_1.default(context, parse.getReader(), parse.getExceptions());
                 }
                 else {
                     let parse = this.parseNodes(child, reader, context);
@@ -164,7 +169,7 @@ export default class CommandDispatcher {
                 if (potentials == null) {
                     potentials = [];
                 }
-                potentials.push(new ParseResults(context, reader, new Map()));
+                potentials.push(new ParseResults_1.default(context, reader, new Map()));
             }
         }
         if (!(potentials == null)) {
@@ -187,7 +192,7 @@ export default class CommandDispatcher {
             }
             return potentials[0];
         }
-        return new ParseResults(contextSoFar, originalReader, errors == null ? new Map() : errors);
+        return new ParseResults_1.default(contextSoFar, originalReader, errors == null ? new Map() : errors);
     }
     getAllUsage(node, source, restricted) {
         const result = [];
@@ -284,15 +289,15 @@ export default class CommandDispatcher {
         let truncatedInput = fullInput.substring(0, cursor);
         let futures = [];
         for (let node of parent.getChildren()) {
-            let future = await Suggestions.empty();
+            let future = await Suggestions_1.default.empty();
             try {
-                future = await node.listSuggestions(context.build(truncatedInput), new SuggestionsBuilder(truncatedInput, start));
+                future = await node.listSuggestions(context.build(truncatedInput), new SuggestionsBuilder_1.default(truncatedInput, start));
             }
             catch (ignored) {
             }
             futures.push(future);
         }
-        return Promise.resolve(Suggestions.merge(fullInput, futures));
+        return Promise.resolve(Suggestions_1.default.merge(fullInput, futures));
     }
     getRoot() {
         return this.root;
@@ -334,4 +339,5 @@ export default class CommandDispatcher {
             this.addPaths(child, result, current);
     }
 }
+exports.default = CommandDispatcher;
 //# sourceMappingURL=CommandDispatcher.js.map

@@ -1,11 +1,17 @@
-import StringReader from "../StringReader";
-export var StringType;
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.StringType = void 0;
+const StringReader_1 = __importDefault(require("../StringReader"));
+var StringType;
 (function (StringType) {
     StringType["SINGLE_WORD"] = "words_with_underscores";
     StringType["QUOTABLE_PHRASE"] = "\"quoted phrase\"";
     StringType["GREEDY_PHRASE"] = "words with spaces";
-})(StringType || (StringType = {}));
-export default class StringArgumentType {
+})(StringType = exports.StringType || (exports.StringType = {}));
+class StringArgumentType {
     constructor(type) {
         this.type = type;
     }
@@ -42,7 +48,7 @@ export default class StringArgumentType {
     }
     static escapeIfRequired(input) {
         for (let c of input) {
-            if (!StringReader.isAllowedInUnquotedString(c)) {
+            if (!StringReader_1.default.isAllowedInUnquotedString(c)) {
                 return StringArgumentType.escape(input);
             }
         }
@@ -61,4 +67,5 @@ export default class StringArgumentType {
         return result;
     }
 }
+exports.default = StringArgumentType;
 //# sourceMappingURL=StringArgumentType.js.map

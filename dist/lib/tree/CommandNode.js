@@ -1,4 +1,9 @@
-import isEqual from "../util/isEqual";
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const isEqual_1 = __importDefault(require("../util/isEqual"));
 class CommandNode {
     constructor(command, requirement, redirect, modifier, forks) {
         this.children = new Map();
@@ -84,9 +89,9 @@ class CommandNode {
         if (this.children.size !== o.children.size) {
             return false;
         }
-        if (!isEqual(this.children, o.children))
+        if (!isEqual_1.default(this.children, o.children))
             return false;
-        if (this.command != null ? !isEqual(this.command, o.command) : o.command != null)
+        if (this.command != null ? !isEqual_1.default(this.command, o.command) : o.command != null)
             return false;
         return true;
     }
@@ -124,5 +129,5 @@ class CommandNode {
         return this.forks;
     }
 }
-export default CommandNode;
+exports.default = CommandNode;
 //# sourceMappingURL=CommandNode.js.map

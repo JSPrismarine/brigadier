@@ -1,7 +1,12 @@
-import CommandSyntaxException from "./exceptions/CommandSyntaxException";
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const CommandSyntaxException_1 = __importDefault(require("./exceptions/CommandSyntaxException"));
 const SYNTAX_ESCAPE = '\\';
 const SYNTAX_QUOTE = '\"';
-export default class StringReader {
+class StringReader {
     constructor(other) {
         this.cursor = 0;
         if (typeof other === "string") {
@@ -60,12 +65,12 @@ export default class StringReader {
         }
         let number = this.string.substring(start, this.cursor);
         if (number.length === 0) {
-            throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.readerExpectedInt().createWithContext(this);
+            throw CommandSyntaxException_1.default.BUILT_IN_EXCEPTIONS.readerExpectedInt().createWithContext(this);
         }
         const result = parseFloat(number);
         if (isNaN(result) || result !== Math.round(result)) {
             this.cursor = start;
-            throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.readerInvalidInt().createWithContext(this, number);
+            throw CommandSyntaxException_1.default.BUILT_IN_EXCEPTIONS.readerInvalidInt().createWithContext(this, number);
         }
         else
             return result;
@@ -77,12 +82,12 @@ export default class StringReader {
         }
         let number = this.string.substring(start, this.cursor);
         if (number.length === 0) {
-            throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.readerExpectedFloat().createWithContext(this);
+            throw CommandSyntaxException_1.default.BUILT_IN_EXCEPTIONS.readerExpectedFloat().createWithContext(this);
         }
         const result = parseFloat(number);
         if (isNaN(result) || result !== Number(number)) {
             this.cursor = start;
-            throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.readerInvalidFloat().createWithContext(this, number);
+            throw CommandSyntaxException_1.default.BUILT_IN_EXCEPTIONS.readerInvalidFloat().createWithContext(this, number);
         }
         else
             return result;
@@ -106,7 +111,7 @@ export default class StringReader {
             return "";
         }
         else if ((this.peek() != SYNTAX_QUOTE)) {
-            throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.readerExpectedStartOfQuote().createWithContext(this);
+            throw CommandSyntaxException_1.default.BUILT_IN_EXCEPTIONS.readerExpectedStartOfQuote().createWithContext(this);
         }
         this.skip();
         let result = "";
@@ -120,7 +125,7 @@ export default class StringReader {
                 }
                 else {
                     this.setCursor(this.getCursor() - 1);
-                    throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.readerInvalidEscape().createWithContext(this, c);
+                    throw CommandSyntaxException_1.default.BUILT_IN_EXCEPTIONS.readerInvalidEscape().createWithContext(this, c);
                 }
             }
             else if (c == SYNTAX_ESCAPE) {
@@ -133,7 +138,7 @@ export default class StringReader {
                 result += c;
             }
         }
-        throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.readerExpectedEndOfQuote().createWithContext(this);
+        throw CommandSyntaxException_1.default.BUILT_IN_EXCEPTIONS.readerExpectedEndOfQuote().createWithContext(this);
     }
     readString() {
         if (this.canRead() && (this.peek() === SYNTAX_QUOTE)) {
@@ -147,7 +152,7 @@ export default class StringReader {
         let start = this.cursor;
         let value = this.readString();
         if (value.length === 0) {
-            throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.readerExpectedBool().createWithContext(this);
+            throw CommandSyntaxException_1.default.BUILT_IN_EXCEPTIONS.readerExpectedBool().createWithContext(this);
         }
         if (value === "true") {
             return true;
@@ -157,14 +162,15 @@ export default class StringReader {
         }
         else {
             this.cursor = start;
-            throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.readerInvalidBool().createWithContext(this, value);
+            throw CommandSyntaxException_1.default.BUILT_IN_EXCEPTIONS.readerInvalidBool().createWithContext(this, value);
         }
     }
     expect(c) {
         if (!this.canRead() || this.peek() !== c) {
-            throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.readerExpectedSymbol().createWithContext(this, c);
+            throw CommandSyntaxException_1.default.BUILT_IN_EXCEPTIONS.readerExpectedSymbol().createWithContext(this, c);
         }
         this.skip();
     }
 }
+exports.default = StringReader;
 //# sourceMappingURL=StringReader.js.map

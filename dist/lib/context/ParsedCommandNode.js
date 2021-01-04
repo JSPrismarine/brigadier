@@ -1,4 +1,6 @@
-export default class ParsedCommandNode {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class ParsedCommandNode {
     constructor(node, range) {
         this.node = node;
         this.range = range;
@@ -21,4 +23,5 @@ export default class ParsedCommandNode {
         return this.node.equals(o.node) && this.range.equals(o.range);
     }
 }
+exports.default = ParsedCommandNode;
 //# sourceMappingURL=ParsedCommandNode.js.map

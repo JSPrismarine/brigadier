@@ -1,15 +1,20 @@
-import CommandNode from "../tree/CommandNode";
-import RootCommandNode from "../tree/RootCommandNode";
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const CommandNode_1 = __importDefault(require("../tree/CommandNode"));
+const RootCommandNode_1 = __importDefault(require("../tree/RootCommandNode"));
 class ArgumentBuilder {
     constructor() {
-        this.args = new RootCommandNode();
+        this.args = new RootCommandNode_1.default();
         this.modifier = null;
     }
     then(arg) {
         if (!(this.target == null)) {
             throw new Error("Cannot add children to a redirected node");
         }
-        if (arg instanceof CommandNode)
+        if (arg instanceof CommandNode_1.default)
             this.args.addChild(arg);
         else
             this.args.addChild(arg.build());
@@ -57,5 +62,5 @@ class ArgumentBuilder {
         return this.forks;
     }
 }
-export default ArgumentBuilder;
+exports.default = ArgumentBuilder;
 //# sourceMappingURL=ArgumentBuilder.js.map

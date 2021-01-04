@@ -1,7 +1,12 @@
-import StringRange from "./StringRange";
-export default class ParsedArgument {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const StringRange_1 = __importDefault(require("./StringRange"));
+class ParsedArgument {
     constructor(start, end, result) {
-        this.range = StringRange.between(start, end);
+        this.range = StringRange_1.default.between(start, end);
         this.result = result;
     }
     getRange() {
@@ -18,4 +23,5 @@ export default class ParsedArgument {
         return this.range.equals(o.range) && this.result === o.result;
     }
 }
+exports.default = ParsedArgument;
 //# sourceMappingURL=ParsedArgument.js.map

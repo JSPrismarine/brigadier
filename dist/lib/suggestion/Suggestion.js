@@ -1,5 +1,10 @@
-import isEqual from "../util/isEqual";
-export default class Suggestion {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const isEqual_1 = __importDefault(require("../util/isEqual"));
+class Suggestion {
     constructor(range, text, tooltip = null) {
         this.range = range;
         this.text = text;
@@ -33,7 +38,7 @@ export default class Suggestion {
             return true;
         if (!(o instanceof Suggestion))
             return false;
-        return isEqual(this.range, o.range) && (this.text === o.text) && isEqual(this.tooltip, o.tooltip);
+        return isEqual_1.default(this.range, o.range) && (this.text === o.text) && isEqual_1.default(this.tooltip, o.tooltip);
     }
     toString() {
         return "Suggestion{" +
@@ -63,4 +68,5 @@ export default class Suggestion {
         return new Suggestion(range, result, this.tooltip);
     }
 }
+exports.default = Suggestion;
 //# sourceMappingURL=Suggestion.js.map

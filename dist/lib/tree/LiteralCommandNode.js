@@ -1,10 +1,15 @@
-import CommandNode from "./CommandNode";
-import StringReader from "../StringReader";
-import LiteralArgumentBuilder from "../builder/LiteralArgumentBuilder";
-import StringRange from "../context/StringRange";
-import CommandSyntaxException from "../exceptions/CommandSyntaxException";
-import Suggestions from "../suggestion/Suggestions";
-export default class LiteralCommandNode extends CommandNode {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const CommandNode_1 = __importDefault(require("./CommandNode"));
+const StringReader_1 = __importDefault(require("../StringReader"));
+const LiteralArgumentBuilder_1 = __importDefault(require("../builder/LiteralArgumentBuilder"));
+const StringRange_1 = __importDefault(require("../context/StringRange"));
+const CommandSyntaxException_1 = __importDefault(require("../exceptions/CommandSyntaxException"));
+const Suggestions_1 = __importDefault(require("../suggestion/Suggestions"));
+class LiteralCommandNode extends CommandNode_1.default {
     constructor(literal, command, requirement, redirect, modifier, forks) {
         super(command, requirement, redirect, modifier, forks);
         this.literal = literal;
@@ -22,10 +27,10 @@ export default class LiteralCommandNode extends CommandNode {
         let start = reader.getCursor();
         let end = this.__parse(reader);
         if (end > -1) {
-            contextBuilder.withNode(this, StringRange.between(start, end));
+            contextBuilder.withNode(this, StringRange_1.default.between(start, end));
             return;
         }
-        throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().createWithContext(reader, this.literal);
+        throw CommandSyntaxException_1.default.BUILT_IN_EXCEPTIONS.literalIncorrect().createWithContext(reader, this.literal);
     }
     __parse(reader) {
         let start = reader.getCursor();
@@ -48,11 +53,11 @@ export default class LiteralCommandNode extends CommandNode {
             return builder.suggest(this.literal).buildPromise();
         }
         else {
-            return Suggestions.empty();
+            return Suggestions_1.default.empty();
         }
     }
     isValidInput(input) {
-        return this.__parse(new StringReader(input)) > -1;
+        return this.__parse(new StringReader_1.default(input)) > -1;
     }
     equals(o) {
         if (this === o)
@@ -67,7 +72,7 @@ export default class LiteralCommandNode extends CommandNode {
         return this.literal;
     }
     createBuilder() {
-        let builder = LiteralArgumentBuilder.literal(this.literal);
+        let builder = LiteralArgumentBuilder_1.default.literal(this.literal);
         builder.requires(this.getRequirement());
         builder.forward(this.getRedirect(), this.getRedirectModifier(), this.isFork());
         if (this.getCommand() != null)
@@ -84,4 +89,5 @@ export default class LiteralCommandNode extends CommandNode {
         return "<literal " + this.literal + ">";
     }
 }
+exports.default = LiteralCommandNode;
 //# sourceMappingURL=LiteralCommandNode.js.map

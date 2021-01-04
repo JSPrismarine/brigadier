@@ -1,5 +1,7 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const EXAMPLES = ["true", "false"];
-export default class BoolArgumentType {
+class BoolArgumentType {
     constructor() {
     }
     static bool() {
@@ -24,4 +26,5 @@ export default class BoolArgumentType {
         return EXAMPLES;
     }
 }
+exports.default = BoolArgumentType;
 //# sourceMappingURL=BoolArgumentType.js.map

@@ -1,5 +1,10 @@
-import isEqual from "../util/isEqual";
-export default class CommandContext {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const isEqual_1 = __importDefault(require("../util/isEqual"));
+class CommandContext {
     constructor(source, input, args, command, rootNode, nodes, range, child, modifier, forks) {
         this.source = source;
         this.input = input;
@@ -51,15 +56,15 @@ export default class CommandContext {
             return true;
         if (!(o instanceof CommandContext))
             return false;
-        if (!isEqual(this.args, o.args))
+        if (!isEqual_1.default(this.args, o.args))
             return false;
         if (!this.rootNode.equals(o.rootNode))
             return false;
-        if (this.nodes.length != o.nodes.length || !isEqual(this.nodes, o.nodes))
+        if (this.nodes.length != o.nodes.length || !isEqual_1.default(this.nodes, o.nodes))
             return false;
-        if (!(this.command == null) ? !isEqual(this.command, o.command) : o.command != null)
+        if (!(this.command == null) ? !isEqual_1.default(this.command, o.command) : o.command != null)
             return false;
-        if (!isEqual(this.source, o.source))
+        if (!isEqual_1.default(this.source, o.source))
             return false;
         if (!(this.child == null) ? !this.child.equals(o.child) : o.child != null)
             return false;
@@ -87,4 +92,5 @@ export default class CommandContext {
         return this.forks;
     }
 }
+exports.default = CommandContext;
 //# sourceMappingURL=CommandContext.js.map

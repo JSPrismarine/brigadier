@@ -1,4 +1,6 @@
-export default class StringRange {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class StringRange {
     constructor(start, end) {
         this.start = start;
         this.end = end;
@@ -41,4 +43,5 @@ export default class StringRange {
         return "StringRange{" + "start=" + this.start + ", end=" + this.end + '}';
     }
 }
+exports.default = StringRange;
 //# sourceMappingURL=StringRange.js.map
