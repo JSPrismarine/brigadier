@@ -1,0 +1,39 @@
+{
+    "name": "@jsprismarine/brigadier",
+    "version": "0.1.0",
+    "description": "A javascript port of Mojangs Brigadier library",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "homepage": "http://github.com/JSPrismarine/brigadier",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/JSPrismarine/brigadier.git"
+    },
+    "keywords": [
+        "command",
+        "minecraft",
+        "prismarine"
+    ],
+    "dependencies": {},
+    "devDependencies": {
+        "@types/chai": "^4.2.7",
+        "@types/mocha": "^5.2.7",
+        "@types/node": "^10.17.10",
+        "chai": "^4.2.0",
+        "mocha": "^5.2.0",
+        "radargun": "^1.0.1",
+        "ts-mockito": "^2.5.0",
+        "ts-node": "^7.0.1",
+        "typescript": "^3.7.3"
+    },
+    "scripts": {
+        "build": "tsc",
+        "test": "mocha --require ts-node/register test/**/*.ts",
+        "test:watch": "mocha --require ts-node/register test/**/*.ts --watch",
+        "benchmark": "radargun test/benchmarks/*.js",
+        "prettier": "prettier --config .prettierrc src/**/*.* --check",
+        "prettier:format": "prettier --config .prettierrc src/**/*.* --write"
+    },
+    "author": "@JSPrismarine",
+    "license": "MIT"
+}
