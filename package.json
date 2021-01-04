@@ -18,15 +18,15 @@
         "yarnhook": "^0.5.1"
     },
     "devDependencies": {
-        "@types/chai": "^4.2.7",
-        "@types/mocha": "^5.2.7",
-        "@types/node": "^10.17.10",
-        "chai": "^4.2.0",
-        "mocha": "^5.2.0",
-        "radargun": "^1.0.1",
-        "ts-mockito": "^2.5.0",
-        "ts-node": "^7.0.1",
-        "typescript": "^3.7.3"
+        "@types/chai": "4.2.14",
+        "@types/mocha": "5.2.7",
+        "@types/node": "10.17.50",
+        "chai": "4.2.0",
+        "mocha": "5.2.0",
+        "radargun": "1.0.1",
+        "ts-mockito": "2.6.1",
+        "ts-node": "7.0.1",
+        "typescript": "3.9.7"
     },
     "scripts": {
         "build": "tsc",
