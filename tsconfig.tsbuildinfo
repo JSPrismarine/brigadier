@@ -302,7 +302,7 @@
         "affectsGlobalScope": false
       },
       "./src/lib/builder/ArgumentBuilder.ts": {
-        "version": "bf15cd3d92900e1a15614d5ba92e6f571e893cda7d3a19d1b9e3f741d1958abf",
+        "version": "23f599dc3212b6993f96fdae05971d1cf2d3253ebfe1caf60b889b9850340ae4",
         "signature": "d7aa52e4c396f7cd0d867d27fed4038bd2e0a4a9155bac027d5a6d1fe3008263",
         "affectsGlobalScope": false
       },
@@ -327,8 +327,8 @@
         "affectsGlobalScope": false
       },
       "./src/lib/Command.ts": {
-        "version": "435fc125580a0187af70d58a1915892766b7c3236b068ea7a906f8e5a2ea3e84",
-        "signature": "239cb6466cd6874740908fc2ff988bc63d931cd68dbe6b49bcd01c9395428b61",
+        "version": "daa07f8488276f6bf35087b493d47f97d0cbe6c54b793d543df79158face8244",
+        "signature": "7dd14f47f250653d948731ffbf6df93795d86bb3c98a287fd2dc0ddf61be789d",
         "affectsGlobalScope": false
       },
       "./src/lib/context/SuggestionContext.ts": {
@@ -347,8 +347,8 @@
         "affectsGlobalScope": false
       },
       "./src/lib/ResultConsumer.ts": {
-        "version": "35e145d3645b31ede98234c87dcbe9c4d66a8318e4175dc6d2ac2844119fc752",
-        "signature": "595624cd9e9ca21b1e86aa2e4aa714de536b34ed777cd3a9cf0e65324646090f",
+        "version": "b2faaa4ca53255a12ebf650759a10b1ac2c5bdb72e3dc1455cf917db3d4c8d1c",
+        "signature": "1967e728fc0c53a460ba5ad11d23800364b6c3f751ff9259d36876c262c6d318",
         "affectsGlobalScope": false
       },
       "./src/lib/tree/LiteralCommandNode.ts": {
@@ -362,7 +362,7 @@
         "affectsGlobalScope": false
       },
       "./src/lib/CommandDispatcher.ts": {
-        "version": "482a89c71eaf25312d72937669ee2c4da63cab118154f5f2d0307f462f18a561",
+        "version": "b33837b1c97314d97a552cf38c022adc475cf797ffba12b4c5735245df8f949a",
         "signature": "3a6043e7885941a54f827a19e40ffdb1bba6fdd8b19003998eccdd6dd145de09",
         "affectsGlobalScope": false
       },

@@ -103,7 +103,7 @@ class CommandDispatcher {
                         successfulForks++;
                     }
                     catch (ex) {
-                        this.consumer.onCommandComplete(context, false, 0);
+                        this.consumer.onCommandComplete(context, false, ex);
                         if (!forked)
                             throw ex;
                     }
