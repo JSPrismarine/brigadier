@@ -1,11 +1,18 @@
 {
     "compilerOptions": {
         "outDir": "./dist",
+        "sourceRoot": "./src/",
         "target": "es2020",
-        "rootDir": ".",
-        "lib": ["es2020", "esnext"],
-        "module": "commonjs",
+        "rootDir": "./src/",
+        "lib": [
+            "es2020",
+            "esnext"
+        ],
+        "module": "ES2020",
         "moduleResolution": "node",
+        "types": [
+            "node"
+        ],
         "allowJs": true,
         "strict": false,
         "sourceMap": true,
@@ -21,9 +28,10 @@
         "pretty": true
     },
     "include": [
-        "src/**/*",
-        "package.json"
+        "src/**/*"
     ],
-    "exclude": ["src**/*.test.ts"],
-    "typeRoots": ["src/@types", "node_modules/@types"]
+    "typeRoots": [
+        "src/@types",
+        "node_modules/@types"
+    ]
 }

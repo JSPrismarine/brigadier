@@ -1,0 +1,1 @@
+{"version":3,"file":"SuggestionContext.js","sourceRoot":"./src/","sources":["lib/context/SuggestionContext.ts"],"names":[],"mappings":"AAEA,MAAM,CAAC,OAAO,OAAO,iBAAiB;IAKlC,YAAoB,MAAsB,EAAE,QAAgB;QACxD,IAAI,CAAC,MAAM,GAAG,MAAM,CAAC;QACrB,IAAI,CAAC,QAAQ,GAAG,QAAQ,CAAC;IAC7B,CAAC;CACJ"}
