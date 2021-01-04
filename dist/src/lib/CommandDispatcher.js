@@ -52,7 +52,7 @@ class CommandDispatcher {
                 throw CommandSyntaxException_1.default.BUILT_IN_EXCEPTIONS.dispatcherUnknownArgument().createWithContext(parse.getReader());
             }
         }
-        let result = 0;
+        let result = [];
         let successfulForks = 0;
         let forked = false;
         let foundCommand = false;
@@ -98,7 +98,7 @@ class CommandDispatcher {
                     foundCommand = true;
                     try {
                         let value = context.getCommand()(context);
-                        result += value;
+                        result.push(value);
                         this.consumer.onCommandComplete(context, true, value);
                         successfulForks++;
                     }
@@ -116,7 +116,7 @@ class CommandDispatcher {
             this.consumer.onCommandComplete(original, false, 0);
             throw CommandSyntaxException_1.default.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext(parse.getReader());
         }
-        return forked ? successfulForks : result;
+        return result;
     }
     parse(command, source) {
         if (typeof command === "string")

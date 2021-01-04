@@ -43,7 +43,7 @@ export default class CommandDispatcher<S> {
         this.consumer = consumer;
     }
     
-    public execute(input: string | StringReader | ParseResults<S>, source: S = null): number {
+    public execute(input: string | StringReader | ParseResults<S>, source: S = null): Promise<any>[] {
 
 		if (typeof input === "string")
 			input = new StringReader(input);
@@ -68,7 +68,7 @@ export default class CommandDispatcher<S> {
             
         }
         
-        let result = 0;
+        let result = [];
         let successfulForks = 0;
         let forked = false;
         let foundCommand = false;
@@ -116,7 +116,7 @@ export default class CommandDispatcher<S> {
                     foundCommand = true;
                     try {					
                         let value = context.getCommand()(context);
-                        result += value;
+                        result.push(value);
                         this.consumer.onCommandComplete(context, true, value);
                         successfulForks++;
                     } catch (ex) {
@@ -137,7 +137,7 @@ export default class CommandDispatcher<S> {
             throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext(parse.getReader());
         }
         
-        return forked ? successfulForks : result;
+        return result;
     }        
     
     public parse(command: string | StringReader, source: S): ParseResults<S> {

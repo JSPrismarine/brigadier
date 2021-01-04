@@ -362,8 +362,8 @@
         "affectsGlobalScope": false
       },
       "../src/lib/CommandDispatcher.ts": {
-        "version": "67e25f70f99d75bc1ff06d0d496e50025d0666a68a0f3951837c8d5ee05414b9",
-        "signature": "3bb6bc0be048136e3bcd743e1c227e61210e79bf1be4abbf0cbc344cbadb8267",
+        "version": "482a89c71eaf25312d72937669ee2c4da63cab118154f5f2d0307f462f18a561",
+        "signature": "3a6043e7885941a54f827a19e40ffdb1bba6fdd8b19003998eccdd6dd145de09",
         "affectsGlobalScope": false
       },
       "../src/lib/arguments/BoolArgumentType.ts": {
