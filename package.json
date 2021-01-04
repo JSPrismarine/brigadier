@@ -14,7 +14,9 @@
         "minecraft",
         "prismarine"
     ],
-    "dependencies": {},
+    "dependencies": {
+        "yarnhook": "^0.5.1"
+    },
     "devDependencies": {
         "@types/chai": "^4.2.7",
         "@types/mocha": "^5.2.7",
@@ -33,6 +35,14 @@
         "benchmark": "radargun test/benchmarks/*.js",
         "prettier": "prettier --config .prettierrc src/**/*.* --check",
         "prettier:format": "prettier --config .prettierrc src/**/*.* --write"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run build && npm run prettier && npm run test",
+            "post-checkout": "yarnhook",
+            "post-merge": "yarnhook",
+            "post-rewrite": "yarnhook"
+        }
     },
     "author": "@JSPrismarine",
     "license": "MIT"
