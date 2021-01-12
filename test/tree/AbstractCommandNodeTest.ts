@@ -6,7 +6,7 @@ import RootCommandNode from "../../src/lib/tree/RootCommandNode"
 import { literal } from "../../src/lib/builder/LiteralArgumentBuilder"
 
 describe('AbstractCommandNodeTest', () => {
-	const command: Command<Object> = () => 0;
+	const command: Command<Object> = async () => 0;
 
 	function getCommandNode(): CommandNode<Object> {
 		return new RootCommandNode();
