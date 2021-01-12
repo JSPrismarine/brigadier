@@ -14,7 +14,7 @@ import StringReader from "../../src/lib/StringReader"
 const { integer	} = DefaultType;
 
 describe('ArgumentCommandNodeTest', () => {
-	const command: Command<Object> = () => 0;
+	const command: Command<Object> = async () => 0;
 	let contextBuilder: CommandContextBuilder<Object>;
 	let node: ArgumentCommandNode<Object, number>;
 

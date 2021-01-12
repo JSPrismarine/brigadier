@@ -79,7 +79,7 @@ describe('LiteralCommandNodeTest', () => {
     })
 
     it('testEquals', () => {		
-        const command = () => 0;
+        const command = async () => 0;
 
 		testEquality(
 			literal("foo").build(),

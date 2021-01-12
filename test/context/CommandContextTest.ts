@@ -56,8 +56,8 @@ describe('CommandContextTest', () => {
 
     it('testEquals', () => {		
         const otherSource = new Object();
-        const command = () => 1;
-		const otherCommand = () => 2;
+        const command = async () => 1;
+		const otherCommand = async () => 2;
 		
 		const mockedCommandNode = mock(CommandNode)
         const rootNode = new RootCommandNode()
