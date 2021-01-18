@@ -3,14 +3,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const isEqual_1 = __importDefault(require("../util/isEqual"));
-const StringReader_1 = __importDefault(require("../StringReader"));
-const RequiredArgumentBuilder_1 = __importDefault(require("../builder/RequiredArgumentBuilder"));
-const ParsedArgument_1 = __importDefault(require("../context/ParsedArgument"));
-const Suggestions_1 = __importDefault(require("../suggestion/Suggestions"));
 const CommandNode_1 = __importDefault(require("./CommandNode"));
-const USAGE_ARGUMENT_OPEN = "<";
-const USAGE_ARGUMENT_CLOSE = ">";
+const ParsedArgument_1 = __importDefault(require("../context/ParsedArgument"));
+const RequiredArgumentBuilder_1 = __importDefault(require("../builder/RequiredArgumentBuilder"));
+const StringReader_1 = __importDefault(require("../StringReader"));
+const Suggestions_1 = __importDefault(require("../suggestion/Suggestions"));
+const isEqual_1 = __importDefault(require("../util/isEqual"));
+const USAGE_ARGUMENT_OPEN = '<';
+const USAGE_ARGUMENT_CLOSE = '>';
 class ArgumentCommandNode extends CommandNode_1.default {
     constructor(name, type, command, requirement, redirect, modifier, forks, customSuggestions) {
         super(command, requirement, redirect, modifier, forks);
@@ -19,7 +19,7 @@ class ArgumentCommandNode extends CommandNode_1.default {
         this.customSuggestions = customSuggestions;
     }
     getNodeType() {
-        return "argument";
+        return 'argument';
     }
     getType() {
         return this.type;
@@ -35,14 +35,14 @@ class ArgumentCommandNode extends CommandNode_1.default {
     }
     parse(reader, contextBuilder) {
         let start = reader.getCursor();
-        let result = this.type.parse(reader);
+        let result = this.type.parse(reader, contextBuilder);
         let parsed = new ParsedArgument_1.default(start, reader.getCursor(), result);
         contextBuilder.withArgument(this.name, parsed);
         contextBuilder.withNode(this, parsed.getRange());
     }
     listSuggestions(context, builder) {
         if (this.customSuggestions == null) {
-            if (typeof this.type.listSuggestions === "function")
+            if (typeof this.type.listSuggestions === 'function')
                 return this.type.listSuggestions(context, builder);
             else
                 return Suggestions_1.default.empty();
@@ -61,14 +61,13 @@ class ArgumentCommandNode extends CommandNode_1.default {
         }
         return builder;
     }
-    isValidInput(input) {
+    isValidInput(input, context) {
         try {
             let reader = new StringReader_1.default(input);
-            this.type.parse(reader);
+            this.type.parse(reader, context);
             return !reader.canRead() || reader.peek() == ' ';
         }
-        catch (ignored) {
-        }
+        catch (ignored) { }
         return false;
     }
     equals(o) {
@@ -86,10 +85,12 @@ class ArgumentCommandNode extends CommandNode_1.default {
         return this.name;
     }
     getExamples() {
-        return typeof this.type.getExamples === "function" ? this.type.getExamples() : [];
+        return typeof this.type.getExamples === 'function'
+            ? this.type.getExamples()
+            : [];
     }
     toString() {
-        return "<argument " + this.name + ":" + this.type + ">";
+        return '<argument ' + this.name + ':' + this.type + '>';
     }
 }
 exports.default = ArgumentCommandNode;

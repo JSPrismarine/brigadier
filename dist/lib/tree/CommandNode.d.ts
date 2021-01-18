@@ -1,13 +1,13 @@
-import Predicate from "../Predicate";
-import AmbiguityConsumer from "../AmbiguityConsumer";
-import Command from "../Command";
-import RedirectModifier from "../RedirectModifier";
-import StringReader from "../StringReader";
-import ArgumentBuilder from "../builder/ArgumentBuilder";
-import CommandContext from "../context/CommandContext";
-import CommandContextBuilder from "../context/CommandContextBuilder";
-import Suggestions from "../suggestion/Suggestions";
-import SuggestionsBuilder from "../suggestion/SuggestionsBuilder";
+import AmbiguityConsumer from '../AmbiguityConsumer';
+import ArgumentBuilder from '../builder/ArgumentBuilder';
+import Command from '../Command';
+import CommandContext from '../context/CommandContext';
+import CommandContextBuilder from '../context/CommandContextBuilder';
+import Predicate from '../Predicate';
+import RedirectModifier from '../RedirectModifier';
+import StringReader from '../StringReader';
+import Suggestions from '../suggestion/Suggestions';
+import SuggestionsBuilder from '../suggestion/SuggestionsBuilder';
 declare abstract class CommandNode<S> {
     private children;
     private literals;
@@ -27,8 +27,8 @@ declare abstract class CommandNode<S> {
     getRedirectModifier(): RedirectModifier<S>;
     canUse(source: S): boolean;
     addChild(node: CommandNode<S>): void;
-    findAmbiguities(consumer: AmbiguityConsumer<S>): void;
-    abstract isValidInput(input: string): boolean;
+    findAmbiguities(consumer: AmbiguityConsumer<S>, context: any): void;
+    abstract isValidInput(input: string, context: any): boolean;
     equals(o: object): boolean;
     getRequirement(): Predicate<S>;
     abstract getName(): string;

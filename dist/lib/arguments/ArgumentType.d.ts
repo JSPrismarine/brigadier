@@ -1,11 +1,11 @@
-import StringReader from "../StringReader";
-import CommandContext from "../context/CommandContext";
-import Suggestions from "../suggestion/Suggestions";
-import SuggestionsBuilder from "../suggestion/SuggestionsBuilder";
-import BoolArgumentType from "./BoolArgumentType";
-import IntegerArgumentType from "./IntegerArgumentType";
-import FloatArgumentType from "./FloatArgumentType";
-import StringArgumentType from "./StringArgumentType";
+import BoolArgumentType from './BoolArgumentType';
+import CommandContext from '../context/CommandContext';
+import FloatArgumentType from './FloatArgumentType';
+import IntegerArgumentType from './IntegerArgumentType';
+import StringArgumentType from './StringArgumentType';
+import StringReader from '../StringReader';
+import Suggestions from '../suggestion/Suggestions';
+import SuggestionsBuilder from '../suggestion/SuggestionsBuilder';
 export declare const DefaultType: {
     bool: typeof BoolArgumentType.bool;
     integer: typeof IntegerArgumentType.integer;
@@ -15,7 +15,7 @@ export declare const DefaultType: {
     greedyString: typeof StringArgumentType.greedyString;
 };
 export default interface ArgumentType<T> {
-    parse(reader: StringReader): T;
+    parse(reader: StringReader, context: CommandContext<any>): T;
     listSuggestions?<S>(context: CommandContext<S>, builder: SuggestionsBuilder): Promise<Suggestions>;
     getExamples?(): Iterable<string>;
 }

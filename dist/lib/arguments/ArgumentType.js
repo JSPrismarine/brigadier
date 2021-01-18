@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DefaultType = void 0;
 const BoolArgumentType_1 = __importDefault(require("./BoolArgumentType"));
-const IntegerArgumentType_1 = __importDefault(require("./IntegerArgumentType"));
 const FloatArgumentType_1 = __importDefault(require("./FloatArgumentType"));
+const IntegerArgumentType_1 = __importDefault(require("./IntegerArgumentType"));
 const StringArgumentType_1 = __importDefault(require("./StringArgumentType"));
 exports.DefaultType = {
     bool: BoolArgumentType_1.default.bool,

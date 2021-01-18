@@ -1,6 +1,6 @@
 {
     "name": "@jsprismarine/brigadier",
-    "version": "0.1.0",
+    "version": "0.2.0-rc.1",
     "description": "A javascript port of Mojangs Brigadier library",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",

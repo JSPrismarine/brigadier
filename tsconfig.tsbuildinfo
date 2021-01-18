@@ -206,19 +206,39 @@
         "signature": "c9dc39914f668838ce6e5ed8adfaab2ffc470822ad52a84f619b7dfdbea1f460",
         "affectsGlobalScope": false
       },
-      "./src/lib/Predicate.ts": {
-        "version": "d7b4e0d909826825151cb08d5bd1361d353581dc1fa337f44cdde3fc517f383b",
-        "signature": "460daeb63e7d4ffff194fb3d55b25504ff582d94f0c83f153a598b6007b94dce",
-        "affectsGlobalScope": false
-      },
-      "./src/lib/AmbiguityConsumer.ts": {
-        "version": "b6ddfe78c448e2231ee72e8b57d59e4730a9e92dc563ad5f2661e60d59fd23a3",
-        "signature": "a415521e7e575f0e496e1e88fec576d4a870f6f9a47370a2f8fd04a93431296f",
-        "affectsGlobalScope": false
-      },
       "./src/lib/ImmutableStringReader.ts": {
         "version": "ee9b05f4ceb3b94aff83c072a16839175747e73fa45498bc58f7d36b2f62c293",
         "signature": "cefec0176a0f4ba2fdaae920803d7376c46659130bd2334a9b826079c1490af5",
+        "affectsGlobalScope": false
+      },
+      "./src/lib/context/StringRange.ts": {
+        "version": "e0b6f2f3c3697ef721e6dcfbb050cc244ce7d26b3ca306f9e4727aa605252bdf",
+        "signature": "22c238dd15d7406c524be2159091dd8d39419eda06350bb838fc75c78b560326",
+        "affectsGlobalScope": false
+      },
+      "./src/lib/context/ParsedArgument.ts": {
+        "version": "4cc59fc21dedecdb0d0cc04c6f1b5975b2e2829c8dad40fc9566acbb498cf900",
+        "signature": "69b77ed390512743c2f2ef61665eff9001fc9aea0a0c2dff571c6979c5cb770d",
+        "affectsGlobalScope": false
+      },
+      "./src/lib/context/ParsedCommandNode.ts": {
+        "version": "4246d21cbf2f79e676f3c21e18b416ea17ecf0d307c0815be0820e82c80dcfc2",
+        "signature": "7a6e4c21c99058a51085d397f9186687f0072421cd17e62c1ceecc4adc3b9b3f",
+        "affectsGlobalScope": false
+      },
+      "./src/lib/context/CommandContext.ts": {
+        "version": "7c8f48c1454570b173b64b99999c7c2567b26e88b7925e5ef901e15a0253b8fe",
+        "signature": "b75d94f465883c563b0b9a5e6c1690f696a3c2a9a805e53cd3d1c6c584197f9e",
+        "affectsGlobalScope": false
+      },
+      "./src/lib/Command.ts": {
+        "version": "daa07f8488276f6bf35087b493d47f97d0cbe6c54b793d543df79158face8244",
+        "signature": "7dd14f47f250653d948731ffbf6df93795d86bb3c98a287fd2dc0ddf61be789d",
+        "affectsGlobalScope": false
+      },
+      "./src/lib/SingleRedirectModifier.ts": {
+        "version": "51e6c65ca9f881c39203f2f62a8c7a18215f9bb0ee0029eca2717b3a3f2b8c0e",
+        "signature": "1d4df79ac8c66a278d69eabbc506a8ce61e97790a971c5e857e3ffa35ceb8787",
         "affectsGlobalScope": false
       },
       "./src/lib/Message.ts": {
@@ -266,14 +286,14 @@
         "signature": "2807a1d2a13a40f77c9c517542674167e7e6210a9aa2afcedbed6f6354ecc6bd",
         "affectsGlobalScope": false
       },
-      "./src/lib/SingleRedirectModifier.ts": {
-        "version": "51e6c65ca9f881c39203f2f62a8c7a18215f9bb0ee0029eca2717b3a3f2b8c0e",
-        "signature": "1d4df79ac8c66a278d69eabbc506a8ce61e97790a971c5e857e3ffa35ceb8787",
+      "./src/lib/context/SuggestionContext.ts": {
+        "version": "e9df875132775cc435f9a5f8abd64271e143d7c1dc4144878f7a9b141e2c3d87",
+        "signature": "218a7288047fe32c5628c93c1e48134f44caf6b2afc4463da70a6e448d8b001a",
         "affectsGlobalScope": false
       },
-      "./src/lib/context/StringRange.ts": {
-        "version": "e0b6f2f3c3697ef721e6dcfbb050cc244ce7d26b3ca306f9e4727aa605252bdf",
-        "signature": "22c238dd15d7406c524be2159091dd8d39419eda06350bb838fc75c78b560326",
+      "./src/lib/context/CommandContextBuilder.ts": {
+        "version": "84e82e9111a37eb3dba7e6cf3cd15109a5d707d777498fa3492407888eff4bba",
+        "signature": "883212b4c05763699ab9e665418d3875edc08196601cf43f9918e6eeef770253",
         "affectsGlobalScope": false
       },
       "./src/lib/suggestion/Suggestion.ts": {
@@ -301,54 +321,24 @@
         "signature": "3c6df29f8ea580b455a9c81bae6aedd6f5d47bc890bf906ad203eec144dd6b31",
         "affectsGlobalScope": false
       },
+      "./src/lib/Predicate.ts": {
+        "version": "d7b4e0d909826825151cb08d5bd1361d353581dc1fa337f44cdde3fc517f383b",
+        "signature": "460daeb63e7d4ffff194fb3d55b25504ff582d94f0c83f153a598b6007b94dce",
+        "affectsGlobalScope": false
+      },
       "./src/lib/builder/ArgumentBuilder.ts": {
         "version": "23f599dc3212b6993f96fdae05971d1cf2d3253ebfe1caf60b889b9850340ae4",
         "signature": "d7aa52e4c396f7cd0d867d27fed4038bd2e0a4a9155bac027d5a6d1fe3008263",
         "affectsGlobalScope": false
       },
       "./src/lib/tree/CommandNode.ts": {
-        "version": "d9f0766ca123d50219aecc958cfa472b1a606bceb97952d299b42ca29aeeff41",
-        "signature": "949eb05529eb66a4b5d12331273ac4802887ed403844740a7e40b530ed9ad13e",
+        "version": "39c1851d2f776c645fc77c12d7b1138eabd10918170f318e81e3cfa45672a3e8",
+        "signature": "183c95426409fec15bf0ebfa7407d18d3fb4f4d7217a004a9ba5a1a623b6faf8",
         "affectsGlobalScope": false
       },
-      "./src/lib/context/ParsedArgument.ts": {
-        "version": "4cc59fc21dedecdb0d0cc04c6f1b5975b2e2829c8dad40fc9566acbb498cf900",
-        "signature": "69b77ed390512743c2f2ef61665eff9001fc9aea0a0c2dff571c6979c5cb770d",
-        "affectsGlobalScope": false
-      },
-      "./src/lib/context/ParsedCommandNode.ts": {
-        "version": "4246d21cbf2f79e676f3c21e18b416ea17ecf0d307c0815be0820e82c80dcfc2",
-        "signature": "7a6e4c21c99058a51085d397f9186687f0072421cd17e62c1ceecc4adc3b9b3f",
-        "affectsGlobalScope": false
-      },
-      "./src/lib/context/CommandContext.ts": {
-        "version": "7c8f48c1454570b173b64b99999c7c2567b26e88b7925e5ef901e15a0253b8fe",
-        "signature": "b75d94f465883c563b0b9a5e6c1690f696a3c2a9a805e53cd3d1c6c584197f9e",
-        "affectsGlobalScope": false
-      },
-      "./src/lib/Command.ts": {
-        "version": "daa07f8488276f6bf35087b493d47f97d0cbe6c54b793d543df79158face8244",
-        "signature": "7dd14f47f250653d948731ffbf6df93795d86bb3c98a287fd2dc0ddf61be789d",
-        "affectsGlobalScope": false
-      },
-      "./src/lib/context/SuggestionContext.ts": {
-        "version": "e9df875132775cc435f9a5f8abd64271e143d7c1dc4144878f7a9b141e2c3d87",
-        "signature": "218a7288047fe32c5628c93c1e48134f44caf6b2afc4463da70a6e448d8b001a",
-        "affectsGlobalScope": false
-      },
-      "./src/lib/context/CommandContextBuilder.ts": {
-        "version": "84e82e9111a37eb3dba7e6cf3cd15109a5d707d777498fa3492407888eff4bba",
-        "signature": "883212b4c05763699ab9e665418d3875edc08196601cf43f9918e6eeef770253",
-        "affectsGlobalScope": false
-      },
-      "./src/lib/ParseResults.ts": {
-        "version": "2a536082c5fdb7fdb15a514817e74ccae19edac4634b0acdcb7c08be149375ca",
-        "signature": "fe7a3506545078f5fc93ce974e96885b9565f3a612f0b6770cfe43fd11a82c16",
-        "affectsGlobalScope": false
-      },
-      "./src/lib/ResultConsumer.ts": {
-        "version": "b2faaa4ca53255a12ebf650759a10b1ac2c5bdb72e3dc1455cf917db3d4c8d1c",
-        "signature": "1967e728fc0c53a460ba5ad11d23800364b6c3f751ff9259d36876c262c6d318",
+      "./src/lib/AmbiguityConsumer.ts": {
+        "version": "b6ddfe78c448e2231ee72e8b57d59e4730a9e92dc563ad5f2661e60d59fd23a3",
+        "signature": "a415521e7e575f0e496e1e88fec576d4a870f6f9a47370a2f8fd04a93431296f",
         "affectsGlobalScope": false
       },
       "./src/lib/tree/LiteralCommandNode.ts": {
@@ -361,9 +351,19 @@
         "signature": "742b0ace921915399ec12dbfa45b04fbdfbd9fb73f6e1a090a15e1f1d979dd69",
         "affectsGlobalScope": false
       },
+      "./src/lib/ParseResults.ts": {
+        "version": "2a536082c5fdb7fdb15a514817e74ccae19edac4634b0acdcb7c08be149375ca",
+        "signature": "fe7a3506545078f5fc93ce974e96885b9565f3a612f0b6770cfe43fd11a82c16",
+        "affectsGlobalScope": false
+      },
+      "./src/lib/ResultConsumer.ts": {
+        "version": "b2faaa4ca53255a12ebf650759a10b1ac2c5bdb72e3dc1455cf917db3d4c8d1c",
+        "signature": "1967e728fc0c53a460ba5ad11d23800364b6c3f751ff9259d36876c262c6d318",
+        "affectsGlobalScope": false
+      },
       "./src/lib/CommandDispatcher.ts": {
-        "version": "b33837b1c97314d97a552cf38c022adc475cf797ffba12b4c5735245df8f949a",
-        "signature": "3a6043e7885941a54f827a19e40ffdb1bba6fdd8b19003998eccdd6dd145de09",
+        "version": "ce31b102d236441c55854b44c6dd406fb049ecb378cd88730fff13a63ce11e06",
+        "signature": "4489904951c0950e54ea1527010ddfa03284f8229c4b037ac11583a49ebb3881",
         "affectsGlobalScope": false
       },
       "./src/lib/arguments/BoolArgumentType.ts": {
@@ -371,14 +371,14 @@
         "signature": "e58a8b40815fd14df7e76444ab98522f5932ec7708828ec7814c1bb19b612cea",
         "affectsGlobalScope": false
       },
-      "./src/lib/arguments/IntegerArgumentType.ts": {
-        "version": "4f60505f2f44f0448ded31a048a565df9866a19c472d75f26065283a0e1fb7a4",
-        "signature": "d60522aefc686c7d5c55e7e39bf3644871a662ddd0c53b3f301044b368c3a60b",
-        "affectsGlobalScope": false
-      },
       "./src/lib/arguments/FloatArgumentType.ts": {
         "version": "d81facd320a440d3c0fd2e57f115ae0fef4fe5af10f69f86fa8a051d430a0e9f",
         "signature": "359fb56671bc6220eaa132f7de95dd14f68767b822b4c04766dd00071a46c874",
+        "affectsGlobalScope": false
+      },
+      "./src/lib/arguments/IntegerArgumentType.ts": {
+        "version": "4f60505f2f44f0448ded31a048a565df9866a19c472d75f26065283a0e1fb7a4",
+        "signature": "d60522aefc686c7d5c55e7e39bf3644871a662ddd0c53b3f301044b368c3a60b",
         "affectsGlobalScope": false
       },
       "./src/lib/arguments/StringArgumentType.ts": {
@@ -387,8 +387,8 @@
         "affectsGlobalScope": false
       },
       "./src/lib/arguments/ArgumentType.ts": {
-        "version": "d491ad757d4362647d12341c2cc591b6e16bbb41f775514f50c5b22595522ca5",
-        "signature": "5d6aa6d93266c99e3c40c22d2ec6c2b4296e96c9ea18eb0e18ce72cdb8fd38bb",
+        "version": "aa01ff8c5210ae3485a3458dc8e4463353b4d3627babd01639d8cba0818acd39",
+        "signature": "796fb4ce1215b485d07376568677d05ebd40639342e8ae52a62a8307048278db",
         "affectsGlobalScope": false
       },
       "./src/lib/suggestion/SuggestionProvider.ts": {
@@ -397,8 +397,8 @@
         "affectsGlobalScope": false
       },
       "./src/lib/tree/ArgumentCommandNode.ts": {
-        "version": "2616c3ec0c92b091a590d93925417ff61e4886680ee6d4ed589a0b9b375f4ba8",
-        "signature": "5034f970c6a5233ecac5c346c2fad993480f4845715187bf40cfa2f240a2ec13",
+        "version": "dd17936591f9c1cab658fa223511c52e8e0a7099997e37b25ba593e99cab740d",
+        "signature": "e154c5993fe71e0f64757e085b2016b0385df0d6335e834617e2d9f7fd71188d",
         "affectsGlobalScope": false
       },
       "./src/lib/builder/RequiredArgumentBuilder.ts": {
@@ -625,6 +625,11 @@
         "version": "99904fb1a722345db92cce12df63dd0037081a4e1201519398a88e587659544a",
         "signature": "99904fb1a722345db92cce12df63dd0037081a4e1201519398a88e587659544a",
         "affectsGlobalScope": false
+      },
+      "./node_modules/@types/mocha/index.d.ts": {
+        "version": "c4c03cf65951d980ba618ae9601d10438730803fc9c8a1f7b34af8739981e205",
+        "signature": "c4c03cf65951d980ba618ae9601d10438730803fc9c8a1f7b34af8739981e205",
+        "affectsGlobalScope": true
       }
     },
     "options": {
@@ -639,7 +644,8 @@
       "module": 1,
       "moduleResolution": 2,
       "types": [
-        "node"
+        "node",
+        "mocha"
       ],
       "allowJs": true,
       "strict": false,
@@ -1447,6 +1453,7 @@
       ]
     },
     "semanticDiagnosticsPerFile": [
+      "./node_modules/@types/mocha/index.d.ts",
       "./node_modules/@types/node/assert.d.ts",
       "./node_modules/@types/node/async_hooks.d.ts",
       "./node_modules/@types/node/base.d.ts",

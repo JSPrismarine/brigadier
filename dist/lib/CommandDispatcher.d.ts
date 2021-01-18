@@ -1,12 +1,12 @@
-import ParseResults from "./ParseResults";
-import ResultConsumer from "./ResultConsumer";
-import AmbiguityConsumer from "./AmbiguityConsumer";
-import LiteralArgumentBuilder from "./builder/LiteralArgumentBuilder";
-import Suggestions from "./suggestion/Suggestions";
-import CommandNode from "./tree/CommandNode";
-import LiteralCommandNode from "./tree/LiteralCommandNode";
-import RootCommandNode from "./tree/RootCommandNode";
-import StringReader from "./StringReader";
+import AmbiguityConsumer from './AmbiguityConsumer';
+import CommandNode from './tree/CommandNode';
+import LiteralArgumentBuilder from './builder/LiteralArgumentBuilder';
+import LiteralCommandNode from './tree/LiteralCommandNode';
+import ParseResults from './ParseResults';
+import ResultConsumer from './ResultConsumer';
+import RootCommandNode from './tree/RootCommandNode';
+import StringReader from './StringReader';
+import Suggestions from './suggestion/Suggestions';
 export default class CommandDispatcher<S> {
     private root;
     private consumer;
@@ -24,6 +24,6 @@ export default class CommandDispatcher<S> {
     getRoot(): RootCommandNode<S>;
     getPath(target: CommandNode<S>): string[];
     findNode(path: string[]): CommandNode<S>;
-    findAmbiguities(consumer: AmbiguityConsumer<S>): void;
+    findAmbiguities(consumer: AmbiguityConsumer<S>, context: any): void;
     private addPaths;
 }

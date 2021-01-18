@@ -3,19 +3,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const ParseResults_1 = __importDefault(require("./ParseResults"));
 const CommandContextBuilder_1 = __importDefault(require("./context/CommandContextBuilder"));
 const CommandSyntaxException_1 = __importDefault(require("./exceptions/CommandSyntaxException"));
-const Suggestions_1 = __importDefault(require("./suggestion/Suggestions"));
-const SuggestionsBuilder_1 = __importDefault(require("./suggestion/SuggestionsBuilder"));
+const ParseResults_1 = __importDefault(require("./ParseResults"));
 const RootCommandNode_1 = __importDefault(require("./tree/RootCommandNode"));
 const StringReader_1 = __importDefault(require("./StringReader"));
-const ARGUMENT_SEPARATOR = " ";
-const USAGE_OPTIONAL_OPEN = "[";
-const USAGE_OPTIONAL_CLOSE = "]";
-const USAGE_REQUIRED_OPEN = "(";
-const USAGE_REQUIRED_CLOSE = ")";
-const USAGE_OR = "|";
+const Suggestions_1 = __importDefault(require("./suggestion/Suggestions"));
+const SuggestionsBuilder_1 = __importDefault(require("./suggestion/SuggestionsBuilder"));
+const ARGUMENT_SEPARATOR = ' ';
+const USAGE_OPTIONAL_OPEN = '[';
+const USAGE_OPTIONAL_CLOSE = ']';
+const USAGE_REQUIRED_OPEN = '(';
+const USAGE_REQUIRED_CLOSE = ')';
+const USAGE_OR = '|';
 class CommandDispatcher {
     constructor(root = null) {
         this.consumer = {
@@ -32,7 +32,7 @@ class CommandDispatcher {
         this.consumer = consumer;
     }
     execute(input, source = null) {
-        if (typeof input === "string")
+        if (typeof input === 'string')
             input = new StringReader_1.default(input);
         let parse;
         if (input instanceof StringReader_1.default) {
@@ -119,7 +119,7 @@ class CommandDispatcher {
         return result;
     }
     parse(command, source) {
-        if (typeof command === "string")
+        if (typeof command === 'string')
             command = new StringReader_1.default(command);
         let context = new CommandContextBuilder_1.default(this, source, this.root, command.getCursor());
         return this.parseNodes(this.root, command, context);
@@ -181,10 +181,12 @@ class CommandDispatcher {
                     if (a.getReader().canRead() && !b.getReader().canRead()) {
                         return 1;
                     }
-                    if (a.getExceptions().size === 0 && b.getExceptions().size !== 0) {
+                    if (a.getExceptions().size === 0 &&
+                        b.getExceptions().size !== 0) {
                         return -1;
                     }
-                    if (a.getExceptions().size !== 0 && b.getExceptions().size === 0) {
+                    if (a.getExceptions().size !== 0 &&
+                        b.getExceptions().size === 0) {
                         return 1;
                     }
                     return 0;
@@ -196,10 +198,10 @@ class CommandDispatcher {
     }
     getAllUsage(node, source, restricted) {
         const result = [];
-        this.__getAllUsage(node, source, result, "", restricted);
+        this.__getAllUsage(node, source, result, '', restricted);
         return result;
     }
-    __getAllUsage(node, source, result, prefix = "", restricted) {
+    __getAllUsage(node, source, result, prefix = '', restricted) {
         if (restricted && !node.canUse(source)) {
             return;
         }
@@ -207,12 +209,18 @@ class CommandDispatcher {
             result.push(prefix);
         }
         if (node.getRedirect() != null) {
-            const redirect = node.getRedirect() === this.root ? "..." : "-> " + node.getRedirect().getUsageText();
-            result.push(prefix.length === 0 ? node.getUsageText() + ARGUMENT_SEPARATOR + redirect : prefix + ARGUMENT_SEPARATOR + redirect);
+            const redirect = node.getRedirect() === this.root
+                ? '...'
+                : '-> ' + node.getRedirect().getUsageText();
+            result.push(prefix.length === 0
+                ? node.getUsageText() + ARGUMENT_SEPARATOR + redirect
+                : prefix + ARGUMENT_SEPARATOR + redirect);
         }
         else if (node.getChildrenCount() > 0) {
             for (let child of node.getChildren()) {
-                this.__getAllUsage(child, source, result, prefix.length === 0 ? child.getUsageText() : prefix + ARGUMENT_SEPARATOR + child.getUsageText(), restricted);
+                this.__getAllUsage(child, source, result, prefix.length === 0
+                    ? child.getUsageText()
+                    : prefix + ARGUMENT_SEPARATOR + child.getUsageText(), restricted);
             }
         }
     }
@@ -231,18 +239,24 @@ class CommandDispatcher {
         if (!node.canUse(source)) {
             return null;
         }
-        let self = optional ? USAGE_OPTIONAL_OPEN + node.getUsageText() + USAGE_OPTIONAL_CLOSE : node.getUsageText();
+        let self = optional
+            ? USAGE_OPTIONAL_OPEN + node.getUsageText() + USAGE_OPTIONAL_CLOSE
+            : node.getUsageText();
         let childOptional = node.getCommand() != null;
         let open = childOptional ? USAGE_OPTIONAL_OPEN : USAGE_REQUIRED_OPEN;
         let close = childOptional ? USAGE_OPTIONAL_CLOSE : USAGE_REQUIRED_CLOSE;
         if (!deep) {
-            if ((node.getRedirect() != null)) {
-                let redirect = node.getRedirect() == this.root ? "..." : "-> " + node.getRedirect().getUsageText();
+            if (node.getRedirect() != null) {
+                let redirect = node.getRedirect() == this.root
+                    ? '...'
+                    : '-> ' + node.getRedirect().getUsageText();
                 return self + ARGUMENT_SEPARATOR + redirect;
             }
             else {
-                let children = [...node.getChildren()].filter(c => c.canUse(source));
-                if ((children.length == 1)) {
+                let children = [
+                    ...node.getChildren()
+                ].filter((c) => c.canUse(source));
+                if (children.length == 1) {
                     let usage = this.__getSmartUsage(children[0], source, childOptional, childOptional);
                     if (!(usage == null)) {
                         return self + ARGUMENT_SEPARATOR + usage;
@@ -258,7 +272,13 @@ class CommandDispatcher {
                     }
                     if (childUsage.size === 1) {
                         let usage = childUsage.values().next().value;
-                        return self + ARGUMENT_SEPARATOR + (childOptional ? USAGE_OPTIONAL_OPEN + usage + USAGE_OPTIONAL_CLOSE : usage);
+                        return (self +
+                            ARGUMENT_SEPARATOR +
+                            (childOptional
+                                ? USAGE_OPTIONAL_OPEN +
+                                    usage +
+                                    USAGE_OPTIONAL_CLOSE
+                                : usage));
                     }
                     else if (childUsage.size > 1) {
                         let builder = open;
@@ -293,8 +313,7 @@ class CommandDispatcher {
             try {
                 future = await node.listSuggestions(context.build(truncatedInput), new SuggestionsBuilder_1.default(truncatedInput, start));
             }
-            catch (ignored) {
-            }
+            catch (ignored) { }
             futures.push(future);
         }
         return Promise.resolve(Suggestions_1.default.merge(fullInput, futures));
@@ -327,8 +346,8 @@ class CommandDispatcher {
         }
         return node;
     }
-    findAmbiguities(consumer) {
-        this.root.findAmbiguities(consumer);
+    findAmbiguities(consumer, context) {
+        this.root.findAmbiguities(consumer, context);
     }
     addPaths(node, result, parents) {
         let current = [];

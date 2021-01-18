@@ -37,13 +37,13 @@ class CommandNode {
         return this.requirement(source);
     }
     addChild(node) {
-        if (node.getNodeType() === "root") {
-            throw new Error("Cannot add a RootCommandNode as a child to any other CommandNode");
+        if (node.getNodeType() === 'root') {
+            throw new Error('Cannot add a RootCommandNode as a child to any other CommandNode');
         }
         let child = this.children.get(node.getName());
         if (child != null) {
             //  We've found something to merge onto
-            if ((node.getCommand() != null)) {
+            if (node.getCommand() != null) {
                 child.command = node.getCommand();
             }
             for (let grandchild of node.getChildren()) {
@@ -52,16 +52,16 @@ class CommandNode {
         }
         else {
             this.children.set(node.getName(), node);
-            if (node.getNodeType() === "literal") {
+            if (node.getNodeType() === 'literal') {
                 this.literals.set(node.getName(), node);
             }
-            else if (node.getNodeType() === "argument") {
+            else if (node.getNodeType() === 'argument') {
                 this.args.set(node.getName(), node);
             }
         }
         this.children = new Map([...this.children.entries()].sort((a, b) => a[1].compareTo(b[1])));
     }
-    findAmbiguities(consumer) {
+    findAmbiguities(consumer, context) {
         let matches = [];
         for (let child of this.children.values()) {
             for (let sibling of this.children.values()) {
@@ -69,7 +69,7 @@ class CommandNode {
                     continue;
                 }
                 for (let input of child.getExamples()) {
-                    if (sibling.isValidInput(input)) {
+                    if (sibling.isValidInput(input, context)) {
                         matches.push(input);
                     }
                 }
@@ -78,7 +78,7 @@ class CommandNode {
                     matches = [];
                 }
             }
-            child.findAmbiguities(consumer);
+            child.findAmbiguities(consumer, context);
         }
     }
     equals(o) {
@@ -91,7 +91,9 @@ class CommandNode {
         }
         if (!isEqual_1.default(this.children, o.children))
             return false;
-        if (this.command != null ? !isEqual_1.default(this.command, o.command) : o.command != null)
+        if (this.command != null
+            ? !isEqual_1.default(this.command, o.command)
+            : o.command != null)
             return false;
         return true;
     }
@@ -101,8 +103,7 @@ class CommandNode {
     getRelevantNodes(input) {
         if (this.literals.size > 0) {
             let cursor = input.getCursor();
-            while ((input.canRead()
-                && (input.peek() != ' '))) {
+            while (input.canRead() && input.peek() != ' ') {
                 input.skip();
             }
             let text = input.getString().substring(cursor, input.getCursor());
@@ -123,7 +124,7 @@ class CommandNode {
         if (this.getNodeType() === o.getNodeType()) {
             return this.getSortedKey() > o.getSortedKey() ? 1 : -1;
         }
-        return (o.getNodeType() === "literal") ? 1 : -1;
+        return o.getNodeType() === 'literal' ? 1 : -1;
     }
     isFork() {
         return this.forks;

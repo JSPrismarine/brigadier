@@ -1,15 +1,15 @@
-import Command from "../Command";
-import Predicate from "../Predicate";
-import RedirectModifier from "../RedirectModifier";
-import StringReader from "../StringReader";
-import ArgumentType from "../arguments/ArgumentType";
-import RequiredArgumentBuilder from "../builder/RequiredArgumentBuilder";
-import CommandContext from "../context/CommandContext";
-import CommandContextBuilder from "../context/CommandContextBuilder";
-import Suggestions from "../suggestion/Suggestions";
-import SuggestionProvider from "../suggestion/SuggestionProvider";
-import SuggestionsBuilder from "../suggestion/SuggestionsBuilder";
-import CommandNode from "./CommandNode";
+import ArgumentType from '../arguments/ArgumentType';
+import Command from '../Command';
+import CommandContext from '../context/CommandContext';
+import CommandContextBuilder from '../context/CommandContextBuilder';
+import CommandNode from './CommandNode';
+import Predicate from '../Predicate';
+import RedirectModifier from '../RedirectModifier';
+import RequiredArgumentBuilder from '../builder/RequiredArgumentBuilder';
+import StringReader from '../StringReader';
+import SuggestionProvider from '../suggestion/SuggestionProvider';
+import Suggestions from '../suggestion/Suggestions';
+import SuggestionsBuilder from '../suggestion/SuggestionsBuilder';
 export default class ArgumentCommandNode<S, T> extends CommandNode<S> {
     private name;
     private type;
@@ -23,7 +23,7 @@ export default class ArgumentCommandNode<S, T> extends CommandNode<S> {
     parse(reader: StringReader, contextBuilder: CommandContextBuilder<S>): void;
     listSuggestions(context: CommandContext<S>, builder: SuggestionsBuilder): Promise<Suggestions>;
     createBuilder(): RequiredArgumentBuilder<S, T>;
-    isValidInput(input: string): boolean;
+    isValidInput(input: string, context: any): boolean;
     equals(o: object): boolean;
     getSortedKey(): string;
     getExamples(): Iterable<string>;
