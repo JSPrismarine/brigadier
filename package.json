@@ -18,10 +18,10 @@
         "yarnhook": "^0.5.1"
     },
     "devDependencies": {
-        "@types/chai": "4.2.14",
+        "@types/chai": "4.2.18",
         "@types/mocha": "8.2.0",
         "@types/node": "10.17.51",
-        "chai": "4.2.0",
+        "chai": "4.3.4",
         "mocha": "8.2.1",
         "radargun": "1.0.1",
         "ts-mockito": "2.6.1",
