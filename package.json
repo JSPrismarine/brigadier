@@ -20,7 +20,7 @@
     "devDependencies": {
         "@types/chai": "4.2.14",
         "@types/mocha": "8.2.0",
-        "@types/node": "10.17.51",
+        "@types/node": "14.17.3",
         "chai": "4.2.0",
         "mocha": "8.2.1",
         "radargun": "1.0.1",
