@@ -18,7 +18,7 @@
         "yarnhook": "^0.5.1"
     },
     "devDependencies": {
-        "@types/chai": "4.2.14",
+        "@types/chai": "4.2.22",
         "@types/mocha": "8.2.0",
         "@types/node": "10.17.51",
         "chai": "4.2.0",
