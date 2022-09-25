@@ -19,7 +19,7 @@
     },
     "devDependencies": {
         "@types/chai": "4.2.14",
-        "@types/mocha": "8.2.0",
+        "@types/mocha": "8.2.3",
         "@types/node": "10.17.51",
         "chai": "4.2.0",
         "mocha": "8.2.1",
