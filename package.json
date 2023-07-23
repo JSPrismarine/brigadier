@@ -15,7 +15,7 @@
         "prismarine"
     ],
     "dependencies": {
-        "yarnhook": "^0.5.1"
+        "yarnhook": "^0.6.0"
     },
     "devDependencies": {
         "@types/chai": "4.2.14",
