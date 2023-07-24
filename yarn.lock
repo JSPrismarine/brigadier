@@ -879,10 +879,10 @@ yargs@13.3.2:
     y18n "^4.0.0"
     yargs-parser "^13.1.2"
 
-yarnhook@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/yarnhook/-/yarnhook-0.5.1.tgz#27d47947412bd124874d56aa75725b76b68cc398"
-  integrity sha512-YPLLXO/PzsFXKvRfsOG/r60WBz8RT7VbkkQv2oHDb6o+EjX0vcUSeA3aw5el2AEWjbcg1sgemjHyCwRIvQxZWw==
+yarnhook@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/yarnhook/-/yarnhook-0.6.0.tgz#9c970a9a4b99838a3f4b5cb2ee15387ecd8b5291"
+  integrity sha512-YKgf2a1ipmn1W4F5zwi2ZrOWfBV/JuFKCMsf68wn/ii2IcIFYXfwQzuIijWc7vbNkDmOvFBGufJonG3gi33EgA==
   dependencies:
     execa "^4.0.3"
     find-parent-dir "^0.3.0"
