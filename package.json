@@ -5,6 +5,13 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "homepage": "http://github.com/JSPrismarine/brigadier",
+    "files": [
+        "index.js",
+        "dist",
+        "README.md",
+        "LICENSE",
+        "package.json"
+    ],
     "repository": {
         "type": "git",
         "url": "git://github.com/JSPrismarine/brigadier.git"
