@@ -17,8 +17,8 @@ devDependencies:
     specifier: 8.2.0
     version: 8.2.0
   '@types/node':
-    specifier: 10.17.51
-    version: 10.17.51
+    specifier: 10.17.60
+    version: 10.17.60
   chai:
     specifier: 4.4.1
     version: 4.4.1
@@ -48,8 +48,8 @@ packages:
     resolution: {integrity: sha512-/Sge3BymXo4lKc31C8OINJgXLaw+7vL1/L1pGiBNpGrBiT8FQiaFpSYV0uhTaG4y78vcMBTMFsWaHDvuD+xGzQ==}
     dev: true
 
-  /@types/node@10.17.51:
-    resolution: {integrity: sha512-KANw+MkL626tq90l++hGelbl67irOJzGhUJk6a1Bt8QHOeh9tztJx+L0AqttraWKinmZn7Qi5lJZJzx45Gq0dg==}
+  /@types/node@10.17.60:
+    resolution: {integrity: sha512-F0KIgDJfy2nA3zMLmWGKxcH2ZVEtCZXHHdOQs2gSaQ27+lNeEfGxzkIw90aXswATX7AZ33tahPbzy6KAfUreVw==}
     dev: true
 
   /@ungap/promise-all-settled@1.1.2:
