@@ -45,7 +45,7 @@ export default class CommandDispatcher<S> {
     public execute(
         input: string | StringReader | ParseResults<S>,
         source: S = null
-    ): Promise<any>[] {
+    ): Promise<any> | Promise<any>[] | any {
         if (typeof input === 'string') input = new StringReader(input);
 
         let parse: ParseResults<S>;
@@ -84,7 +84,8 @@ export default class CommandDispatcher<S> {
                     forked = forked || context.isForked();
                     if (child.hasNodes()) {
                         foundCommand = true;
-                        let modifier: RedirectModifier<S> = context.getRedirectModifier();
+                        let modifier: RedirectModifier<S> =
+                            context.getRedirectModifier();
                         if (modifier == null) {
                             if (next == null) next = [];
                             next.push(child.copyFor(context.getSource()));
@@ -183,12 +184,13 @@ export default class CommandDispatcher<S> {
             if (reader.canRead(child.getRedirect() == null ? 2 : 1)) {
                 reader.skip();
                 if (!(child.getRedirect() == null)) {
-                    let childContext: CommandContextBuilder<S> = new CommandContextBuilder(
-                        this,
-                        source,
-                        child.getRedirect(),
-                        reader.getCursor()
-                    );
+                    let childContext: CommandContextBuilder<S> =
+                        new CommandContextBuilder(
+                            this,
+                            source,
+                            child.getRedirect(),
+                            reader.getCursor()
+                        );
                     let parse: ParseResults<S> = this.parseNodes(
                         child.getRedirect(),
                         reader,
@@ -346,9 +348,9 @@ export default class CommandDispatcher<S> {
                         : '-> ' + node.getRedirect().getUsageText();
                 return self + ARGUMENT_SEPARATOR + redirect;
             } else {
-                let children: CommandNode<S>[] = [
-                    ...node.getChildren()
-                ].filter((c) => c.canUse(source));
+                let children: CommandNode<S>[] = [...node.getChildren()].filter(
+                    (c) => c.canUse(source)
+                );
                 if (children.length == 1) {
                     let usage = this.__getSmartUsage(
                         children[0],
@@ -409,9 +411,8 @@ export default class CommandDispatcher<S> {
         cursor = parse.getReader().getTotalLength()
     ): Promise<Suggestions> {
         let context: CommandContextBuilder<S> = parse.getContext();
-        let nodeBeforeCursor: SuggestionContext<S> = context.findSuggestionContext(
-            cursor
-        );
+        let nodeBeforeCursor: SuggestionContext<S> =
+            context.findSuggestionContext(cursor);
         let parent: CommandNode<S> = nodeBeforeCursor.parent;
         let start = Math.min(nodeBeforeCursor.startPos, cursor);
         let fullInput = parse.getReader().getString();

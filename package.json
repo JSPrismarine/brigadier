@@ -30,8 +30,8 @@
     },
     "scripts": {
         "build": "tsc -p tsconfig.json",
-        "test": "mocha --require ts-node/register test/**/*.ts",
-        "test:watch": "mocha --require ts-node/register test/**/*.ts --watch",
+        "test": "mocha --require ts-node/register --recursive \"./src/**/*.test.ts\"",
+        "test:watch": "mocha --require ts-node/register --recursive \"./src/**/*.test.ts\" --watch",
         "benchmark": "radargun test/benchmarks/*.js",
         "prettier": "prettier --config .prettierrc src/**/*.* --check",
         "prettier:format": "prettier --config .prettierrc src/**/*.* --write"

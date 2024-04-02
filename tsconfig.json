@@ -23,6 +23,6 @@
         "pretty": true
     },
     "include": ["src/**/*"],
-    "exclude": ["src**/*.test.ts", "node_modules"],
+    "exclude": ["src/**/*.test.ts", "node_modules"],
     "typeRoots": ["src/@types", "node_modules/@types"]
 }

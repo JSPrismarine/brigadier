@@ -86,10 +86,8 @@ export default class ArgumentCommandNode<S, T> extends CommandNode<S> {
     }
 
     public createBuilder(): RequiredArgumentBuilder<S, T> {
-        let builder: RequiredArgumentBuilder<
-            S,
-            T
-        > = RequiredArgumentBuilder.argument(this.name, this.type);
+        let builder: RequiredArgumentBuilder<S, T> =
+            RequiredArgumentBuilder.argument(this.name, this.type);
         builder.requires(this.getRequirement());
         builder.forward(
             this.getRedirect(),
