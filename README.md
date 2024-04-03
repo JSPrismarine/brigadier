@@ -1,6 +1,8 @@
-# @jsprismarine/brigadier
+# [**This package has been moved to the JSPrismarine monorepo**](https://github.com/JSPrismarine/JSPrismarine/tree/master/packages/brigadier)
 
-[![License](https://img.shields.io/github/license/JSPrismarine/JSPrismarine)](https://github.com/JSPrismarine/JSPrismarine/blob/master/LICENSE)
+## @jsprismarine/brigadier
+
+[![License](https://img.shields.io/github/license/JSPrismarine/brigadier)](https://github.com/JSPrismarine/brigadier/blob/master/LICENSE)
 [![Join the Discord Server](https://img.shields.io/discord/704967868885762108?color=%237289DA&label=Discord)](https://discord.gg/6w8JWhy)
 [![Contributors](https://img.shields.io/github/contributors/JSPrismarine/brigadier?color=%23E30B5D)](https://github.com/JSPrismarine/brigadier/graphs/contributors)
 [![npm](https://img.shields.io/npm/dt/@jsprismarine/brigadier)](https://www.npmjs.com/package/@jsprismarine/brigadier)
@@ -9,15 +11,15 @@ This is a nodejs version of Mojang's Brigadier library. Originally developed by 
 
 > Brigadier is a command parser & dispatcher, designed and developed for Minecraft: Java Edition and now freely available for use elsewhere under the MIT license.
 
-# Installation
+## Installation
 
 ```
 npm install @jsprismarine/brigadier --save
 ```
 
-# Usage
+## Usage
 
-## Dispatch a command
+### Dispatch a command
 
 ```javascript
 const {
@@ -26,7 +28,7 @@ const {
     argument,
     string,
     Suggestions
-} = require('node-brigadier');
+} = require('@jsprismarine/brigadier');
 
 class BlockPos {
     constructor(x = 0, y = 0, z = 0) {
