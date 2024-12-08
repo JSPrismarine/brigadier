@@ -28,7 +28,7 @@
         "@types/chai": "4.3.14",
         "@types/mocha": "10.0.6",
         "@types/node": "10.17.60",
-        "chai": "4.4.1",
+        "chai": "5.1.0",
         "mocha": "10.4.0",
         "radargun": "1.0.1",
         "ts-mockito": "2.6.1",
